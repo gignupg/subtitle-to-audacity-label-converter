@@ -47,8 +47,8 @@ fs.readdir(downloadDir, function (err, files) {
             const sentenceEnd = numberConverter(elem.end);
             const sentenceStart = numberConverter(elem.start);
 
-            // Spot music and silence
-            const music = /♪/.test(text);
+            // Spot music, other sounds, and silence
+            const music = /♪|\[.+\]/.test(text);   // The automated subtitles on Youtube use [Music] to indicate music and [Applause] and so on.
             const includesWords = /\w/.test(text);
 
             // If it's music or doesn't include any words
